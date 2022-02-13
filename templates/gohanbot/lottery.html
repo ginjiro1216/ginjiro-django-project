@@ -1,0 +1,12 @@
+{% extends 'gohanbot/base.html' %}
+{% block main %}
+
+    <div>
+        <h3>今日のご飯は</h3>
+        <p class="fs-1" style="color: orange">{{ shop.shop }}</p>です
+    </div>
+    <div style="margin-top: 50px;">
+        <h3>もう一度くじを引く</h3>
+        <a href="{% url 'lottery' %}" class="btn btn-primary">ご飯くじ</a>
+    </div>
+{% endblock %}

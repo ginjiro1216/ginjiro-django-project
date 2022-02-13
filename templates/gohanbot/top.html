@@ -1,0 +1,34 @@
+{% extends 'gohanbot/base.html' %}
+{% block main %}
+            <div>
+                <h2 class="title">
+                    お店一覧
+                </h2>
+            </div>
+          {% if shops %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>お店</th>
+                    <th>説明</th>
+                    <th>種類</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for shop in shops %}
+                    <tr>
+                        <th>{{ shop.shop }}</th>
+                        <th>{{ shop.description }}</th>
+                        <th>{{ shop.food_kind }}</th>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>お店が登録されていないよ</p>
+        {% endif %}
+        <div style="margin-top: 50px;">
+            <h3>今日のご飯を決める</h3>
+            <a href="{% url 'lottery' %}" class="btn btn-primary">ご飯くじ</a>
+        </div>
+{% endblock %}
