@@ -1,1 +1,5 @@
 .idea
+apps/local_settings.py
+apps/__pychache__/
+db.sqlite3
+test/
