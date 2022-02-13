@@ -103,13 +103,15 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+try:
+    from .local_settings import *
+except ImportError:
+    pass
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR / 'static')
-]
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 if not DEBUG:
     SECRET_KEY = os.environ['SECRET_KEY']
@@ -118,10 +120,7 @@ if not DEBUG:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
 if not DEBUG:
     SECRET_KEY = os.environ['SECRET_KEY']
+
