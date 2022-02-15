@@ -1,4 +1,4 @@
-{% extends 'gohanbot/base.html' %}
+{% extends 'base.html' %}
 {% block main %}
             <div>
                 <h2 class="title">
@@ -10,16 +10,18 @@
                 <thead>
                 <tr>
                     <th>お店</th>
-                    <th>説明</th>
+{#                    <th>説明</th>#}
                     <th>種類</th>
+                    <th>投稿者</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for shop in shops %}
                     <tr>
                         <th>{{ shop.shop }}</th>
-                        <th>{{ shop.description }}</th>
+{#                        <th>{{ shop.description }}</th>#}
                         <th>{{ shop.food_kind }}</th>
+                        <th>{{ shop.created_by.first_name }}</th>
                     </tr>
                 {% endfor %}
                 </tbody>

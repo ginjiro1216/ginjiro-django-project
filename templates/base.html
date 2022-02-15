@@ -1,0 +1,47 @@
+{% load static %}
+{% load django_bootstrap5 %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="今日のごはんはなににしようかなあ" />
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="apple-touch-icon" href="{% static 'img/favicon.ico' %}">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>ごはんぼっと</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% block extraheader %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand flex-md-row navbar-light"
+     style="background-color: orange;">
+    <div class="container justify-content-between">
+        <a href="/" class="navbar-brand " style="padding-bottom: 10px;">ごはんぼっと</a>
+        <ul class="navbar navbar-nav mr-md-2">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'logout' %}">ログアウト</a>
+                </li>
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">ログイン</a>
+                </li>
+                <li class="nav-item"><a class="nav-link"
+                                        href="{% url 'signup' %}">サインアップ</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<main style="margin-top: 20px;">
+    <div class="container">
+        {% block main %} {% endblock %}
+    </div>
+
+</main>
+
+</body>
+
+
+</html>

@@ -92,9 +92,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# LOGIN_URL = 'accounts/login'
-# LOGIN_REDIRECT_URL = '/s'
-# LOGOUT_REDIRECT_URL = '/s'
+LOGIN_URL = 'accounts/login'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 
 LANGUAGE_CODE = 'ja'

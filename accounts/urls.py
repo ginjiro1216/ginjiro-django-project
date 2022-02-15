@@ -8,7 +8,7 @@ urlpatterns = [
     path('signup/', CreateView.as_view(
         template_name='accounts/signup.html',
         form_class=UserCreationForm,
-        success_url='/s',
+        success_url='/',
     ), name='signup'),
     path('login/', LoginView.as_view(
         redirect_authenticated_user=True,
