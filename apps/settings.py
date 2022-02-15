@@ -18,12 +18,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'snippets.apps.SnippetsConfig',
     'gohanbot.apps.GohanbotConfig',
+    'accounts.apps.AccountsConfig',
     'django_extensions',
     'debug_toolbar',
     'django_bootstrap5',
-    'pygments_renderer'
 ]
 
 MIDDLEWARE = [
@@ -93,6 +92,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# LOGIN_URL = 'accounts/login'
+# LOGIN_REDIRECT_URL = '/s'
+# LOGOUT_REDIRECT_URL = '/s'
 
 
 LANGUAGE_CODE = 'ja'
