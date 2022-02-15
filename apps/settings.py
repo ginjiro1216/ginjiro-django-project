@@ -110,15 +110,15 @@ USE_TZ = True
 # except ImportError:
 #     pass
 
-# STATIC_URL = '/static/'
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+# if not DEBUG:
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-if not DEBUG:
-    SECRET_KEY = os.environ['SECRET_KEY']
-    import django_heroku
-    django_heroku.settings(locals())
+# if not DEBUG:
+SECRET_KEY = os.environ['SECRET_KEY']
+import django_heroku
+django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
