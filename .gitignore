@@ -1,6 +1,9 @@
 .idea
-apps/local_settings.py
-apps/__pychache__/
+config/local_settings.py
+config/__pychache__/
 db.sqlite3
 test/
 __pycache__/
+.env
+.env_development
+.env_heroku

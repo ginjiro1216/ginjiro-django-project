@@ -1,14 +1,23 @@
 import os.path
 from pathlib import Path
 
+import environ
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+env.read_env(f'{BASE_DIR}/.env')
 
-DEBUG = False
+SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+
+
+DEBUG = bool(env('DEBUG'))
+
+ALLOWED_HOSTS = []
+if not DEBUG:
+    ALLOWED_HOSTS = [].append(env('ALLOWED_HOSTS', str))
 
 
 INSTALLED_APPS = [
@@ -18,8 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gohanbot.apps.GohanbotConfig',
-    'accounts.apps.AccountsConfig',
+    'apps.gohanbot.apps.GohanbotConfig',
+    'apps.accounts.apps.AccountsConfig',
     'django_extensions',
     'debug_toolbar',
     'django_bootstrap5',
@@ -39,7 +48,7 @@ MIDDLEWARE = [
 
 INTERNAL_IPS = ['127.0.0.1']
 
-ROOT_URLCONF = 'apps.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -58,17 +67,17 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'apps.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'name',
-        'USER': 'user',
-        'PASSWORD': '',
-        'HOST': 'host',
-        'PORT': '',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('HOST'),
+        'PORT': env('PORT'),
     }
 }
 
@@ -104,11 +113,6 @@ TIME_ZONE = 'Asia/Tokyo'
 USE_I18N = True
 
 USE_TZ = True
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
 STATIC_URL = '/static/'
 

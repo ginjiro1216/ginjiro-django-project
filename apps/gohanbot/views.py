@@ -1,7 +1,7 @@
 import random
 
 from django.shortcuts import render
-from gohanbot.models import FoodShop
+from apps.gohanbot.models import FoodShop
 
 
 # Create your views here.

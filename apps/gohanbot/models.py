@@ -2,6 +2,7 @@ from django.db import models
 
 from django.conf import settings
 
+
 class FoodKind(models.Model):
     kind = models.CharField('種類', max_length=128)
 
