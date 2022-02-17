@@ -22,13 +22,13 @@
             {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{% url 'logout' %}">ログアウト</a>
+                       href="{% url 'logout' %}">ろぐあうと</a>
                 </li>
             {% else %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">ログイン</a>
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">ろぐいん</a>
                 </li>
                 <li class="nav-item"><a class="nav-link"
-                                        href="{% url 'signup' %}">サインアップ</a>
+                                        href="{% url 'signup' %}">さいんあっぷ</a>
                 </li>
             {% endif %}
         </ul>

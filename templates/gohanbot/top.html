@@ -1,34 +1,45 @@
 {% extends 'base.html' %}
 {% block main %}
-            <div>
-                <h2 class="title">
-                    お店一覧
-                </h2>
-            </div>
-          {% if shops %}
-            <table class="table">
-                <thead>
+    <div>
+        <h2 class="title">
+            おみせいちらん
+        </h2>
+    </div>
+    {% if shops %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>おみせ</th>
+                <th>しゅるい</th>
+                <th>とうこうしゃ</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for shop in shops %}
                 <tr>
-                    <th>お店</th>
-                    <th>種類</th>
-                    <th>投稿者</th>
+                    <th>{{ shop.shop }}</th>
+                    <th>{{ shop.food_kind }}</th>
+                    <th>{{ shop.created_by.first_name }}</th>
                 </tr>
-                </thead>
-                <tbody>
-                {% for shop in shops %}
-                    <tr>
-                        <th>{{ shop.shop }}</th>
-                        <th>{{ shop.food_kind }}</th>
-                        <th>{{ shop.created_by.first_name }}</th>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <p>お店が登録されていないよ</p>
-        {% endif %}
-        <div style="margin-top: 50px;">
-            <h3>今日のご飯を決める</h3>
-            <a href="{% url 'lottery' %}" class="btn btn-primary">ご飯くじ</a>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>おみせがとうろくされていないよ</p>
+    {% endif %}
+    <div style="display: flex; justify-content: left; margin-top: 50px;">
+        <div style="">
+            <h3>きょうのごはんをきめる</h3>
+            <a href="{% url 'lottery' %}" class="btn"
+               style="background-color: orange; color: white;width: 100px">ご飯くじ</a>
         </div>
+        {% if user.is_authenticated %}
+        <div style="margin-left: 200px;">
+            <h3>おみせをとうろくする</h3>
+            <a href="{% url 'shop_register' %}" class="btn"
+               style="background-color: orange;color: white; width: 100px; mar">登録</a>
+        </div>
+        {% endif %}
+    </div>
+
 {% endblock %}

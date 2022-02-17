@@ -15,7 +15,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = bool(env('DEBUG'))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 if not DEBUG:
     ALLOWED_HOSTS = [].append(env('ALLOWED_HOSTS', str))
 
@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.gohanbot.apps.GohanbotConfig',
     'apps.accounts.apps.AccountsConfig',
+    'apps.user.apps.UserConfig',
     'django_extensions',
     'debug_toolbar',
     'django_bootstrap5',
@@ -45,6 +46,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+# AUTH_USER_MODEL = 'u'
 
 INTERNAL_IPS = ['127.0.0.1']
 
