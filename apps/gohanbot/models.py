@@ -9,6 +9,9 @@ class FoodKind(models.Model):
     def __str__(self):
         return self.kind
 
+    class Meta:
+        db_table = 'food_kind'
+
 
 # Create your models here.
 class FoodShop(models.Model):
@@ -24,4 +27,6 @@ class FoodShop(models.Model):
     def __str__(self):
         return self.shop
 
+    class Meta:
+        db_table = 'food_shop'
 
