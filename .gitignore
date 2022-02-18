@@ -1,8 +1,5 @@
 .idea
-config/local_settings.py
 config/__pychache__/
-db.sqlite3
-test/
 __pycache__/
 .env
 .env_development
