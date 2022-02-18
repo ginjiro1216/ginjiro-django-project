@@ -30,7 +30,7 @@ class FoodShopCreateView(View):
         if form.is_valid():
             food_shop = form.save(commit=False)
             food_shop.created_by = request.user
-            food_kind = FoodKind.objects.get(pk=4)
+            food_kind = FoodKind.objects.get(pk=2)
             food_shop.food_kind = food_kind
             food_shop.save()
             return redirect('/', self.template_name)
