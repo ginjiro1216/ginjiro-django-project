@@ -1,7 +1,10 @@
 .idea
 config/__pychache__/
 __pycache__/
+
 .env
 .env_development
 .env_heroku
+.env_production
+.env_dev
 venv
