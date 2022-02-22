@@ -29,4 +29,3 @@ class FoodShop(models.Model):
 
     class Meta:
         db_table = 'food_shop'
-
