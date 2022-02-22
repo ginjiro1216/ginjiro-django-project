@@ -7,10 +7,9 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
-env.read_env(f'{BASE_DIR}/.env')
+env.read_env(f'{BASE_DIR}/env/.env')
 
 SECRET_KEY = env('SECRET_KEY')
-
 
 
 DEBUG = bool(env('DEBUG'))
