@@ -1,0 +1,51 @@
+[
+  {
+    "model": "gohanbot.foodkind",
+    "pk": 1,
+    "fields": {
+      "kind": "みぶんるい"
+    }
+  },
+  {
+    "model": "gohanbot.foodkind",
+    "pk": 2,
+    "fields": {
+      "kind": "おにく"
+    }
+  },
+  {
+    "model": "gohanbot.foodkind",
+    "pk": 3,
+    "fields": {
+      "kind": "おさかな"
+    }
+  },
+  {
+    "model": "gohanbot.foodkind",
+    "pk": 4,
+    "fields": {
+      "kind": "ふぁみれす"
+    }
+  },
+  {
+    "model": "gohanbot.foodkind",
+    "pk": 5,
+    "fields": {
+      "kind": "Bきゅうぐるめ"
+    }
+  },
+  {
+    "model": "gohanbot.foodkind",
+    "pk": 6,
+    "fields": {
+      "kind": "れすとらん"
+    }
+  },
+  {
+    "model": "gohanbot.foodkind",
+    "pk": 7,
+    "fields": {
+      "kind": "ふぁーすとふーど"
+    }
+  }
+]
