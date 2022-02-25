@@ -39,7 +39,6 @@ class FoodShopCreateView(View):
         })
 
 
-
 def lottery(request):
     shops = FoodShop.objects.all()
     amount_shops = len(shops)
