@@ -2,6 +2,7 @@ import random
 
 from django.shortcuts import render, redirect
 from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import FoodShopForm
 from .models import FoodShop, FoodKind
@@ -13,8 +14,7 @@ def top(request):
     return render(request, 'gohanbot/top.html', context)
 
 
-# @method_decorator(decorator=login_required)
-class FoodShopCreateView(View):
+class FoodShopCreateView(LoginRequiredMixin, View):
     form_class = FoodShopForm
     template_name = 'gohanbot/shop_register.html'
     food_kind = FoodKind.objects.all()
