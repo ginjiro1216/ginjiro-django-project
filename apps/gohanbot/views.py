@@ -7,7 +7,6 @@ from .forms import FoodShopForm
 from .models import FoodShop, FoodKind
 
 
-# Create your views here.
 def top(request):
     shops = FoodShop.objects.all()
     context = {"shops": shops}
@@ -18,21 +17,27 @@ def top(request):
 class FoodShopCreateView(View):
     form_class = FoodShopForm
     template_name = 'gohanbot/shop_register.html'
+    food_kind = FoodKind.objects.all()
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {
+            'form': form,
+            'food_kinds': self.food_kind
+        })
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
             food_shop = form.save(commit=False)
             food_shop.created_by = request.user
-            food_kind = FoodKind.objects.get(pk=2)
-            food_shop.food_kind = food_kind
             food_shop.save()
             return redirect('/', self.template_name)
-        return render(request, self.template_name, {'form', form})
+        return render(request, self.template_name, {
+            'form': form,
+            'food_kinds': self.food_kind
+        })
+
 
 
 def lottery(request):
