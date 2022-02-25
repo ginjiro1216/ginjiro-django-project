@@ -4,7 +4,23 @@
     <h1>おみせのとうろく</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div>
+            <label>{{ form.shop.label }}:</label>
+            <div style="display: inline-block">{{ form.shop }}</div>
+        </div>
+        <div>
+            <label for="food_kind">{{ form.food_kind.label }}:</label>
+            <select name="food_kind">
+                <option value="" disabled>--しゅるいをせんたく--</option>
+                {% for food_kind in food_kinds %}
+                    <option value="{{ food_kind.id }}">{{ food_kind.kind }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="shop">{{ form.description.label }}:</label>
+            <div style="display: inline-block">{{ form.description }}</div>
+        </div>
         <button type="submit" class="btn btn-primary">登録</button>
     </form>
 {% endblock %}
