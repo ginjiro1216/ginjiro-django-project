@@ -39,7 +39,13 @@
 </header>
 
 <main style="margin-top: 20px;">
+
     <div class="container">
+        {% for message in messages %}
+            <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </div>
+        {% endfor %}
         {% block main %} {% endblock %}
     </div>
 
@@ -47,7 +53,8 @@
 <footer style="height: 70px; width: 100%; position: fixed; bottom: 0; background-color: orange">
     <div style="text-align: right">
         <img src="{% static 'gohanbot/img/profile.png' %}" alt="うまじろー" height="100%">
-        <p style="display: inline-block; color: white; margin-right: 100px;">ぎんじろう　おーる　らいと　りざーぶど</p>
+        <p style="display: inline-block; color: white; margin-right: 100px;">
+            ぎんじろう　おーる　らいと　りざーぶど</p>
     </div>
 </footer>
 </body>
