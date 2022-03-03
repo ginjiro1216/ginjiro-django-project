@@ -1,5 +1,6 @@
 import random
 
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -32,7 +33,11 @@ class FoodShopCreateView(LoginRequiredMixin, View):
             food_shop = form.save(commit=False)
             food_shop.created_by = request.user
             food_shop.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 "おみせのとうろくにせいこうしたよ！")
             return redirect('/', self.template_name)
+        messages.add_message(request, messages.ERROR,
+                             "おみせのとうろくにしっぱいしちゃった")
         return render(request, self.template_name, {
             'form': form,
             'food_kinds': self.food_kind

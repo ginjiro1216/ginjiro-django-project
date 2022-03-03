@@ -3,6 +3,8 @@ from pathlib import Path
 
 import environ
 import dj_database_url
+from django.contrib import messages
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -133,3 +135,10 @@ if not DEBUG:
     django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MESSAGE_TAGS = {
+    messages.INFO: 'alert alert-info',
+    messages.SUCCESS: 'alert alert-success',
+    messages.ERROR: 'alert alert-danger',
+    messages.WARNING: 'alert alert-warning',
+}
