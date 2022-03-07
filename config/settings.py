@@ -13,12 +13,11 @@ env.read_env(f'{BASE_DIR}/env/.env')
 
 SECRET_KEY = env('SECRET_KEY')
 
-
 DEBUG = bool(env('DEBUG'))
 
 ALLOWED_HOSTS = ['*']
 if not DEBUG:
-    ALLOWED_HOSTS = [].append(env('ALLOWED_HOSTS', str))
+    ALLOWED_HOSTS = ['gohanbot-env.eba-pgpgexdd.ap-northeast-1.elasticbeanstalk.com']
 
 
 INSTALLED_APPS = [
@@ -38,7 +37,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -47,10 +45,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
-
-# AUTH_USER_MODEL = 'u'
-
-INTERNAL_IPS = ['127.0.0.1']
 
 ROOT_URLCONF = 'config.urls'
 
@@ -72,21 +66,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('HOST'),
-        'PORT': env('PORT'),
+        'NAME': env('RDS_DB_NAME'),
+        'USER': env('RDS_DB_USER'),
+        'PASSWORD': env('RDS_PASSWORD'),
+        'HOST': env('RDS_HOSTNAME'),
+        'PORT': env('RDS_PORT'),
     }
 }
-
-
-db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES['default'].update(db_from_env)
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -123,14 +112,13 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+if DEBUG:
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, "static"),
+    )
 
 if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    SECRET_KEY = os.environ['SECRET_KEY']
+    STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static')
     import django_heroku
     django_heroku.settings(locals())
 
