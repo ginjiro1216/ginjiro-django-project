@@ -17,7 +17,7 @@ DEBUG = bool(env('DEBUG'))
 
 ALLOWED_HOSTS = ['*']
 if not DEBUG:
-    ALLOWED_HOSTS = ['gohanbot-env.eba-pgpgexdd.ap-northeast-1.elasticbeanstalk.com']
+    ALLOWED_HOSTS = ['gohanbot.ap-northeast-1.elasticbeanstalk.com']
 
 
 INSTALLED_APPS = [
