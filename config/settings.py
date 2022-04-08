@@ -12,11 +12,11 @@ env.read_env(f"{BASE_DIR}/env/.env")
 
 SECRET_KEY = env("SECRET_KEY")
 
-DEBUG = strtobool(env("DEBUG"))
+DEBUG = bool(strtobool(env("DEBUG")))
 
 ALLOWED_HOSTS = ["*"]
 if not DEBUG:
-    ALLOWED_HOSTS = [""]
+    ALLOWED_HOSTS = ["0.0.0.0"]
 
 
 INSTALLED_APPS = [
