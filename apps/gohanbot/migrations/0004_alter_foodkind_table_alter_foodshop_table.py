@@ -6,16 +6,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gohanbot', '0003_alter_foodshop_created_by_alter_foodshop_description_and_more'),
+        (
+            "gohanbot",
+            "0003_alter_foodshop_created_by_alter_foodshop_description_and_more",
+        )
     ]
 
     operations = [
-        migrations.AlterModelTable(
-            name='foodkind',
-            table='food_kind',
-        ),
-        migrations.AlterModelTable(
-            name='foodshop',
-            table='food_shop',
-        ),
+        migrations.AlterModelTable(name="foodkind", table="food_kind"),
+        migrations.AlterModelTable(name="foodshop", table="food_shop"),
     ]
