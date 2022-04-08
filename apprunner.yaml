@@ -1,0 +1,11 @@
+version: 1.0
+runtime: python3
+build:
+  commands:
+    pre-build:
+      - yum install sqlite3
+    build:
+      - pip install pipenv
+      - pipenv install
+run:
+  command: sh bin/start.sh
