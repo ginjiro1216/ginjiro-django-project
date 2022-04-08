@@ -8,3 +8,4 @@ __pycache__/
 .env_production
 .env_dev
 venv
+db.sqlite3

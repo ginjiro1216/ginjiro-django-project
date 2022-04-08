@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "gohanbot-django"
+version = "0.1.0"
+description = ""
+authors = ["Ginjiro Kinoshita <74758734+ginjiro1216@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "3.2"
+django-bootstrap5 = "^21.3"
+django-debug-toolbar = "^3.2.4"
+django-extensions = "^3.1.5"
+gunicorn = "^20.1.0"
+django-environ = "^0.8.1"
+
+[tool.poetry.dev-dependencies]
+click = "8.0.4"
+autoflake = "^v1.4"
+black = "^22.3.0"
+isort = "^5.10.1"
+vulture = "^2.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+target-version = ["py39"]
+line-length = 80
+pyi = false
+skip-magic-trailing-comma = true
+verbose = true
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+)/
+'''
+
+[tool.isort]
+atomic = true
+ensure_newline_before_comments = true
+include_trailing_comma = true
+line_length = 80
+multi_line_output = 3
+remove_redundant_aliases = true
+skip_glob = 'venv/*'
+
+[tool.vulture]
+exclude = [".venv/"]
+ignore_names = []
