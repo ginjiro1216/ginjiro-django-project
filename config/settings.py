@@ -1,9 +1,9 @@
 import os.path
+from distutils.util import strtobool
 from pathlib import Path
 
 import environ
 from django.contrib import messages
-from distutils.util import strtobool
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

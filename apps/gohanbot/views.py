@@ -48,8 +48,8 @@ def lottery(request):
     template_name = "gohanbot/lottery.html"
     shops = FoodShop.objects.all()
     if len(shops) == 0:
-        messages.add_message(request, messages.ERROR, 'お店が登録されていないよ。')
-        return redirect('/', template_name)
+        messages.add_message(request, messages.ERROR, "お店が登録されていないよ。")
+        return redirect("/", template_name)
     amount_shops = len(shops)
     random_number = random.randint(1, amount_shops)
     shop = FoodShop.objects.get(pk=random_number)

@@ -5,17 +5,9 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('gohanbot', '0005_auto_20220408_2314'),
-    ]
+    dependencies = [("gohanbot", "0005_auto_20220408_2314")]
 
     operations = [
-        migrations.AlterModelTable(
-            name='foodkind',
-            table=None,
-        ),
-        migrations.AlterModelTable(
-            name='foodshop',
-            table=None,
-        ),
+        migrations.AlterModelTable(name="foodkind", table=None),
+        migrations.AlterModelTable(name="foodshop", table=None),
     ]
