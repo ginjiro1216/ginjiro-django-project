@@ -17,3 +17,6 @@ if settings.DEBUG:
     urlpatterns = [
         path("__debug__/", include(debug_toolbar.urls))
     ] + urlpatterns
+
+# if not settings.DEBUG:
+# urlpatterns += staticfiles_urlpatterns()
