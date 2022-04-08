@@ -1,5 +1,4 @@
 import os.path
-from distutils.util import strtobool
 from pathlib import Path
 
 import environ
@@ -8,15 +7,21 @@ from django.contrib import messages
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
-env.read_env(f"{BASE_DIR}/env/.env")
 
-SECRET_KEY = env("SECRET_KEY")
 
-DEBUG = bool(strtobool(env("DEBUG")))
+# env.read_env(f"{BASE_DIR}/env/.enddv")
+
+# SECRET_KEY = env("SECRET_KEY")
+#
+# DEBUG = bool(strtobool(env("DEBUG")))
+SECRET_KEY = (
+    "django-insecure-jodlh#127841tvcj(nm_xl8o_3tu=ten-$@ds$sn5n7u^py=x0"
+)
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 if not DEBUG:
-    ALLOWED_HOSTS = ["0.0.0.0"]
+    ALLOWED_HOSTS = ["https://pmqrnzvbbw.ap-northeast-1.awsapprunner.com"]
 
 
 INSTALLED_APPS = [
@@ -109,7 +114,7 @@ if DEBUG:
     STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
