@@ -1,0 +1,36 @@
+name: python_code_style
+on:
+  push:
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      # セットアップ
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - name: setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9.10
+
+      # Pythonのコードスタイルを検証
+      - name: install autoflake, Black & isort
+        run: pip install autoflake==v1.4 black==22.3.0 isort==5.10.1
+      - name: run isort
+        working-directory: backend/python
+        run: isort . -c
+      - name: run autoflake
+        working-directory: backend/python
+        run: |
+          autoflake . \
+            -c \
+            -r \
+            --ignore-init-module-imports \
+            --remove-all-unused-imports \
+            --remove-duplicate-keys \
+            --remove-unused-variables
+      - name: run Black
+        working-directory: backend/python
+        run: black . --check
